@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Image converter API
+  description: Image conversion and compression service. The service should expose a RESTful API to convert JPEG to PNG and vice versa and compress the image with the compression ratio specified by the user. As a user I should also be able to see my requests history and status and download the original image and the processed one.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8181/
+paths:
+  /login:
+    post:
+      summary: authorization
+      tags:
+        - users
+      requestBody:
+        $ref: ''
+      responses:
+        200:
+          description: successfully logged
+          content:
+            application/json:
+              schema:
+                $ref: ''
+
+  /signup:
+    post:
+      summary: registration
+      tags:
+        - users
+      responses:
+        200:
+          description: successfully registered
+          content:
+            application/json:
+              schema:
+                $ref: ''
+
+  /requests:
+    get:
+      summary: request history
+      tags:
+        - requests
+      responses:
+        200:
+          description: get request history
+          content:
+            application/json:
+              schema:
+                $ref: ''
+
+  /conversion:
+    post:
+      summary: image conversion request
+      tags:
+        - images
+      responses:
+        200:
+          description: conversion request
+          content:
+            application/json:
+              schema:
+                $ref: ''
+
+  /images/{id}:
+    get:
+      summary: download needed image
+      tags:
+        - images
+      parameters:
+        - name: id
+          in: path
+          description: image id
+          required: true
+          schema:
+            format: integer
+      responses:
+        200:
+          description: ready to download
+          content:
+            application/json:
+              schema:
+                $ref: ''
+
